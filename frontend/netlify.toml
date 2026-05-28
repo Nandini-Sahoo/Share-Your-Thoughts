@@ -2,29 +2,15 @@
   command = "npm run build"
   publish = "build"
 
-# Handle React Router (Fixes 404 on refresh)
+# Handle React Router routes - THIS FIXES THE 404 ERROR
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Proxy API requests to Render backend
+# Also handle API redirects to your backend
 [[redirects]]
   from = "/api/*"
   to = "https://share-your-thoughts-backend-f9ww.onrender.com/api/:splat"
   status = 200
   force = true
-
-# Handle asset files
-[[redirects]]
-  from = "/static/*"
-  to = "/static/:splat"
-  status = 200
-
-# Security headers (optional)
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
