@@ -120,7 +120,14 @@ share-your-thoughts/
 
 ## 📸 Screenshots
 
-[Add screenshots here after deployment]
+![Home Page](https://github.com/user-attachments/assets/26601429-6bfa-4999-bbc8-7700432ace2a)
+
+![Post Details](https://github.com/user-attachments/assets/c4cf618b-befd-4018-82e4-49b9e12d49f6)
+
+![Create Post](https://github.com/user-attachments/assets/fbca52dc-9b24-4e7b-9707-45c1abf39721)
+
+![Profile](https://github.com/user-attachments/assets/d23627ac-c6c0-4ef8-ac8f-4821550e1e1d)
+
 
 ## 🐛 Known Issues
 
@@ -138,7 +145,7 @@ share-your-thoughts/
 
 ## 👨‍💻 Author
 
-Nandini Sahoo - [GitHub Profile]](https://github.com/Nandini-Sahoo)
+Nandini Sahoo - [GitHub Profile](https://github.com/Nandini-Sahoo)
 
 ## 📄 License
 
