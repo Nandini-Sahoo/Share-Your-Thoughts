@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';  // ← UNCOMMENTED
 
 const PostCard = ({ post, onLike }) => {
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated, user } = useAuth();  // ← UNCOMMENTED
   
   if (!post) return null;
   
-  const isLiked = isAuthenticated && user && post.likes && post.likes.includes(user.id);
+  const isLiked = isAuthenticated && user && post.likes && post.likes.includes(user.id);  // ← UNCOMMENTED
   const likeCount = post.likes ? post.likes.length : 0;
   const commentCount = post.comments ? post.comments.length : 0;
   
@@ -40,7 +40,11 @@ const PostCard = ({ post, onLike }) => {
         <Link to={`/post/${post._id}`} className="read-more">Read More</Link>
       </div>
       <div className="post-footer">
-        <button onClick={() => onLike(post._id)} className="like-btn">
+        <button 
+          onClick={() => onLike(post._id)} 
+          className={`like-btn ${isLiked ? 'liked' : ''}`}  // ← Different style when liked
+          style={{ color: isLiked ? 'red' : 'black' }}  // ← Visual feedback
+        >
           ❤️ {likeCount} {likeCount === 1 ? 'Like' : 'Likes'}
         </button>
         <span>💬 {commentCount} {commentCount === 1 ? 'Comment' : 'Comments'}</span>

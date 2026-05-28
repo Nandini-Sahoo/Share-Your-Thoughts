@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -10,6 +10,7 @@ import PostDetail from './pages/PostDetail';
 import Profile from './pages/Profile';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
+
 
 function App() {
   return (
