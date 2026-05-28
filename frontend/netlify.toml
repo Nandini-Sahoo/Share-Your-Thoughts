@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+# Handle React Router routes - THIS FIXES THE 404 ERROR
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Also handle API redirects to your backend
+[[redirects]]
+  from = "/api/*"
+  to = "https://share-your-thoughts-backend-f9ww.onrender.com/api/:splat"
+  status = 200
+  force = true
