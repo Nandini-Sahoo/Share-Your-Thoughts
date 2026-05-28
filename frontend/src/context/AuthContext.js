@@ -20,24 +20,24 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   useEffect(() => {
-    if (token) {
-      loadUser();
-    } else {
-      setLoading(false);
-    }
-  }, [token]);
+  if (token) {
+    loadUser();
+  } else {
+    setLoading(false);
+  }
+}, [token, loadUser]);
 
-  const loadUser = async () => {
-    try {
-      const res = await axios.get('http://localhost:5000/api/auth/me');
-      setUser(res.data);
-    } catch (err) {
-      console.error(err);
-      logout();
-    } finally {
-      setLoading(false);
-    }
-  };
+ const loadUser = React.useCallback(async () => {
+  try {
+    const res = await axios.get('http://localhost:5000/api/auth/me');
+    setUser(res.data);
+  } catch (err) {
+    console.error(err);
+    logout();
+  } finally {
+    setLoading(false);
+  }
+}, [token]);
 
   const register = async (userData) => {
     try {

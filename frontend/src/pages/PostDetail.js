@@ -12,19 +12,19 @@ const PostDetail = () => {
   const { isAuthenticated, user, token } = useAuth();
 
   useEffect(() => {
-    fetchPost();
-  }, [id]);
+  fetchPost();
+}, [fetchPost]);
 
-  const fetchPost = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
-      setPost(res.data);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const fetchPost = React.useCallback(async () => {
+  try {
+    const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+    setPost(res.data);
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+}, [id]);
 
   const handleLike = async () => {
     if (!isAuthenticated) {
