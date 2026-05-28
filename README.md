@@ -34,48 +34,48 @@ A full-stack web application where users can share their thoughts, experiences, 
 ## 🚀 Installation
 
 ### 1. Clone the repository
-\`\`\`bash
+```bash
 git clone https://github.com/YOUR_USERNAME/share-your-thoughts.git
 cd share-your-thoughts
-\`\`\`
+```
 
 ### 2. Install Backend Dependencies
-\`\`\`bash
+```bash
 cd backend
 npm install
-\`\`\`
+```
 
 ### 3. Configure Environment Variables
-Create a \`.env\` file in the backend folder:
-\`\`\`env
+Create a `.env` file in the backend folder:
+```env
 MONGODB_URI=mongodb://localhost:27017/share-your-thoughts
 JWT_SECRET=your_super_secret_key
 PORT=5000
-\`\`\`
+```
 
 ### 4. Install Frontend Dependencies
-\`\`\`bash
+```bash
 cd ../frontend
 npm install
-\`\`\`
+```
 
 ### 5. Run the Application
 
 #### Backend (from backend folder)
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 #### Frontend (from frontend folder)
-\`\`\`bash
+```bash
 npm start
-\`\`\`
+```
 
 The app will open at http://localhost:3000
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 share-your-thoughts/
 ├── backend/
 │   ├── models/
@@ -96,14 +96,14 @@ share-your-thoughts/
 │   │   └── App.js
 │   └── public/
 └── README.md
-\`\`\`
+```
 
 ## 🔒 Environment Variables
 
 ### Backend (.env)
-- \`MONGODB_URI\`: MongoDB connection string
-- \`JWT_SECRET\`: Secret key for JWT tokens
-- \`PORT\`: Server port (default: 5000)
+- `MONGODB_URI`: MongoDB connection string
+- `JWT_SECRET`: Secret key for JWT tokens
+- `PORT`: Server port (default: 5000)
 
 ## 🤝 API Endpoints
 
@@ -138,7 +138,7 @@ share-your-thoughts/
 
 ## 👨‍💻 Author
 
-Nandini Sahoo - [Your GitHub Profile]
+Nandini Sahoo - [GitHub Profile]](https://github.com/Nandini-Sahoo)
 
 ## 📄 License
 
