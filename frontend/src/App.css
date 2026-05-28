@@ -1,0 +1,434 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #667eea;
+  text-decoration: none;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.nav-links a:hover {
+  color: #667eea;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 60px 20px;
+  color: white;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Post Cards */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.post-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-content h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.post-content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #667eea;
+  text-decoration: none;
+}
+
+.post-footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+}
+
+.like-btn {
+  background: none;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.like-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Forms */
+.auth-form, .post-form, .profile-form {
+  max-width: 500px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 150px;
+}
+
+button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #5a67d8;
+}
+
+/* Post Detail */
+.post-detail {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.post-body {
+  margin: 30px 0;
+  line-height: 1.8;
+}
+
+.comments-section {
+  margin-top: 40px;
+}
+
+.comment-form {
+  margin: 20px 0;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  min-height: 100px;
+}
+
+.comments-list {
+  margin-top: 20px;
+}
+
+.comment {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Post Detail Page Styles */
+.post-detail {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+}
+
+.post-header .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.post-header small {
+  color: #666;
+  font-size: 12px;
+  display: block;
+}
+
+.post-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.post-actions button {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.delete-btn {
+  background: #dc3545;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+.post-body {
+  margin: 30px 0;
+}
+
+.post-body h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.post-category {
+  margin-bottom: 20px;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #667eea;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.post-body p {
+  line-height: 1.8;
+  color: #555;
+  font-size: 16px;
+}
+
+.post-stats {
+  padding: 15px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin: 20px 0;
+}
+
+.comments-section {
+  margin-top: 40px;
+}
+
+.comments-section h3 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.comment-form {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.comments-list {
+  margin-top: 20px;
+}
+
+.comment {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.comment img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment strong {
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.comment p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.comment small {
+  color: #999;
+  font-size: 11px;
+}
+
+/* Avatar styling */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .post-detail {
+    padding: 20px;
+  }
+  
+  .post-header .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .post-body h1 {
+    font-size: 24px;
+  }
+  
+  .comment {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
