@@ -19,25 +19,26 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
-  const loadUser = async () => {
-    try {
-      const res = await axios.get('/auth/me');
-      setUser(res.data);
-    } catch (err) {
-      console.error(err);
-      logout();
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Move loadUser inside useEffect to fix dependency warning
   useEffect(() => {
+    const loadUser = async () => {
+      try {
+        const res = await axios.get('/auth/me');
+        setUser(res.data);
+      } catch (err) {
+        console.error(err);
+        logout();
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (token) {
       loadUser();
     } else {
       setLoading(false);
     }
-  }, [token]);
+  }, [token]); // Now no dependency warning
 
   const register = async (userData) => {
     try {
