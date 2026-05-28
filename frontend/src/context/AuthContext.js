@@ -11,9 +11,9 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  // Set axios defaults
+  // Set axios defaults - FIXED: Changed API_URL to API_BASE_URL
   useEffect(() => {
-    axios.defaults.baseURL = API_URL;
+    axios.defaults.baseURL = API_BASE_URL;  // ← THIS WAS THE ERROR
     if (token) {
       axios.defaults.headers.common['x-auth-token'] = token;
     }
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-      const res = await axios.get(`${API_BASE_URL}/auth/me`);
+        const res = await axios.get(`${API_BASE_URL}/auth/me`);
         setUser(res.data);
       } catch (err) {
         console.error(err);
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       setLoading(false);
     }
-  }, [token]); // Now no dependency warning
+  }, [token]);
 
   const register = async (userData) => {
     try {
