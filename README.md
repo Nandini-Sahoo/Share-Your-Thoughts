@@ -159,5 +159,4 @@ This project is licensed under the MIT License.
 
 ## 📧 Contact
 
-leninandinisahoo123@gmail.com - for any queries or suggestions
-" > README.md
+leninandinisahoo123@gmail.com - for any queries or suggestions > README.md
