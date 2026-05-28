@@ -1,5 +1,4 @@
-# Create README file
-echo "# Share Your Thoughts - MERN Stack Social Platform
+# Share Your Thoughts - MERN Stack Social Platform
 
 A full-stack web application where users can share their thoughts, experiences, and special life events. Users can like, comment, and interact with posts.
 
@@ -139,7 +138,7 @@ share-your-thoughts/
 
 ## 👨‍💻 Author
 
-[Your Name] - [Your GitHub Profile]
+Nandini Sahoo - [Your GitHub Profile]
 
 ## 📄 License
 
