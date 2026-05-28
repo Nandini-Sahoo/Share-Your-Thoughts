@@ -38,7 +38,7 @@ const CreatePost = () => {
       console.log('Sending post with token:', token); // Debug log
       
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/posts`, 
+        `${API_BASE_URL}/posts`, 
         formData,
         {
           headers: { 
