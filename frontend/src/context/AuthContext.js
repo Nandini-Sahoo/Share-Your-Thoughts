@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -19,25 +19,27 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
-  useEffect(() => {
-  if (token) {
-    loadUser();
-  } else {
-    setLoading(false);
-  }
-}, [token, loadUser]);
+  // Define loadUser with useCallback to prevent recreation
+  const loadUser = useCallback(async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/auth/me');
+      setUser(res.data);
+    } catch (err) {
+      console.error(err);
+      logout();
+    } finally {
+      setLoading(false);
+    }
+  }, []); // Empty dependency array means this function never changes
 
- const loadUser = React.useCallback(async () => {
-  try {
-    const res = await axios.get('http://localhost:5000/api/auth/me');
-    setUser(res.data);
-  } catch (err) {
-    console.error(err);
-    logout();
-  } finally {
-    setLoading(false);
-  }
-}, [token]);
+  // Load user when token changes
+  useEffect(() => {
+    if (token) {
+      loadUser();
+    } else {
+      setLoading(false);
+    }
+  }, [token, loadUser]); // Added loadUser to dependencies
 
   const register = async (userData) => {
     try {

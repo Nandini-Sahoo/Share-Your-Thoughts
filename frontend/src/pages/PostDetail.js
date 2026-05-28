@@ -10,11 +10,7 @@ const PostDetail = () => {
   const [comment, setComment] = useState('');
   const [loading, setLoading] = useState(true);
   const { isAuthenticated, user, token } = useAuth();
-
-  useEffect(() => {
-  fetchPost();
-}, [fetchPost]);
-
+  
   const fetchPost = React.useCallback(async () => {
   try {
     const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
@@ -24,7 +20,12 @@ const PostDetail = () => {
   } finally {
     setLoading(false);
   }
-}, [id]);
+  }, [id]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+  fetchPost();
+}, [fetchPost]);
 
   const handleLike = async () => {
     if (!isAuthenticated) {
