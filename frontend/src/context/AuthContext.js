@@ -1,5 +1,6 @@
-import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config/api';
 
 const AuthContext = createContext();
 
@@ -10,19 +11,17 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  // Set axios header whenever token changes
+  // Set axios defaults
   useEffect(() => {
+    axios.defaults.baseURL = API_URL;
     if (token) {
       axios.defaults.headers.common['x-auth-token'] = token;
-    } else {
-      delete axios.defaults.headers.common['x-auth-token'];
     }
   }, [token]);
 
-  // Define loadUser with useCallback to prevent recreation
-  const loadUser = useCallback(async () => {
+  const loadUser = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/auth/me');
+      const res = await axios.get('/auth/me');
       setUser(res.data);
     } catch (err) {
       console.error(err);
@@ -30,20 +29,19 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  }, []); // Empty dependency array means this function never changes
+  };
 
-  // Load user when token changes
   useEffect(() => {
     if (token) {
       loadUser();
     } else {
       setLoading(false);
     }
-  }, [token, loadUser]); // Added loadUser to dependencies
+  }, [token]);
 
   const register = async (userData) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', userData);
+      const res = await axios.post('/auth/register', userData);
       const { token, user } = res.data;
       localStorage.setItem('token', token);
       setToken(token);
@@ -56,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const res = await axios.post('/auth/login', { email, password });
       const { token, user } = res.data;
       localStorage.setItem('token', token);
       setToken(token);
@@ -76,7 +74,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (profileData) => {
     try {
-      const res = await axios.put('http://localhost:5000/api/users/profile', profileData);
+      const res = await axios.put('/users/profile', profileData);
       setUser(res.data);
       return { success: true };
     } catch (err) {

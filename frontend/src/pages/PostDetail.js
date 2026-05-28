@@ -13,7 +13,7 @@ const PostDetail = () => {
   
   const fetchPost = React.useCallback(async () => {
   try {
-    const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts/${id}`);
     setPost(res.data);
   } catch (err) {
     console.error(err);
@@ -35,7 +35,7 @@ const PostDetail = () => {
     
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/posts/like/${id}`,
+        `${process.env.REACT_APP_API_URL}/posts/like/${id}`,
         {},
         { headers: { 'x-auth-token': token } }
       );
@@ -54,7 +54,7 @@ const PostDetail = () => {
     
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/posts/comment/${id}`,
+        `${process.env.REACT_APP_API_URL}/posts/comment/${id}`,
         { text: comment },
         { headers: { 'x-auth-token': token } }
       );
@@ -68,7 +68,7 @@ const PostDetail = () => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_API_URL}/posts/${id}`, {
           headers: { 'x-auth-token': token }
         });
         navigate('/');

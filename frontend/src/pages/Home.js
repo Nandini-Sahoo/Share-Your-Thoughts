@@ -7,7 +7,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated, user, token } = useAuth();
 
   useEffect(() => {
     fetchPosts();
@@ -16,7 +16,7 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/posts');
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts`);
       console.log('Fetched posts:', res.data); // Debug log
       setPosts(res.data);
       setError('');
@@ -36,7 +36,7 @@ const Home = () => {
     
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/posts/like/${postId}`,
+        `${process.env.REACT_APP_API_URL}/posts/like/${postId}`,
         {},
         { headers: { 'x-auth-token': token } }
       );
