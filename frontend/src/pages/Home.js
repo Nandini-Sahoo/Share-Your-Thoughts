@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import PostCard from '../components/PostCard';
+import API_BASE_URL from '../config/api';  // IMPORT THIS
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -16,9 +17,17 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts`);
-      console.log('Fetched posts:', res.data); // Debug log
-      setPosts(res.data);
+      // USE FULL URL INSTEAD OF RELATIVE PATH
+      const res = await axios.get(`${API_BASE_URL}/posts`);
+      console.log('Fetched posts:', res.data);
+      
+      // Check if res.data is an array
+      if (Array.isArray(res.data)) {
+        setPosts(res.data);
+      } else {
+        console.error('Expected array but got:', typeof res.data);
+        setPosts([]);
+      }
       setError('');
     } catch (err) {
       console.error('Error fetching posts:', err);
@@ -36,7 +45,7 @@ const Home = () => {
     
     try {
       const res = await axios.put(
-        `${process.env.REACT_APP_API_URL}/posts/like/${postId}`,
+        `${API_BASE_URL}/posts/like/${postId}`,
         {},
         { headers: { 'x-auth-token': token } }
       );

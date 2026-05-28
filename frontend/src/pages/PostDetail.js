@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config/api';
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const PostDetail = () => {
   
   const fetchPost = React.useCallback(async () => {
   try {
-    const res = await axios.get(`${process.env.REACT_APP_API_URL}/posts/${id}`);
+    const res = await axios.get(`$${API_BASE_URL}/posts/${id}`);
     setPost(res.data);
   } catch (err) {
     console.error(err);
@@ -35,7 +36,7 @@ const PostDetail = () => {
     
     try {
       const res = await axios.put(
-        `${process.env.REACT_APP_API_URL}/posts/like/${id}`,
+        `${API_BASE_URL}/posts/like/${id}`,
         {},
         { headers: { 'x-auth-token': token } }
       );
@@ -54,7 +55,7 @@ const PostDetail = () => {
     
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/posts/comment/${id}`,
+        `${API_BASE_URL}/posts/comment/${id}`,
         { text: comment },
         { headers: { 'x-auth-token': token } }
       );
@@ -68,7 +69,7 @@ const PostDetail = () => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`${process.env.REACT_APP_API_URL}/posts/${id}`, {
+        await axios.delete(`${API_BASE_URL}/posts/${id}`, {
           headers: { 'x-auth-token': token }
         });
         navigate('/');

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from '../config/api';
+import API_BASE_URL from '../config/api';
 
 const AuthContext = createContext();
 
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        const res = await axios.get('/auth/me');
+      const res = await axios.get(`${API_BASE_URL}/auth/me`);
         setUser(res.data);
       } catch (err) {
         console.error(err);
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const res = await axios.post('/auth/register', userData);
+      const res = await axios.post(`${API_BASE_URL}/auth/register`, userData);
       const { token, user } = res.data;
       localStorage.setItem('token', token);
       setToken(token);
@@ -55,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('/auth/login', { email, password });
+      const res = await axios.post(`${API_BASE_URL}/auth/login`, { email, password });
       const { token, user } = res.data;
       localStorage.setItem('token', token);
       setToken(token);
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
 
   const updateProfile = async (profileData) => {
     try {
-      const res = await axios.put('/users/profile', profileData);
+      const res = await axios.put(`${API_BASE_URL}/users/profile`, profileData);
       setUser(res.data);
       return { success: true };
     } catch (err) {
