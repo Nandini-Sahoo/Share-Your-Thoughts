@@ -14,7 +14,7 @@ const PostDetail = () => {
   
   const fetchPost = React.useCallback(async () => {
   try {
-    const res = await axios.get(`$${API_BASE_URL}/posts/${id}`);
+    const res = await axios.get(`${API_BASE_URL}/posts/${id}`);
     setPost(res.data);
   } catch (err) {
     console.error(err);
