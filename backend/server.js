@@ -10,7 +10,7 @@ const app = express();
 
 // CORS configuration - THIS IS KEY FOR NETLIFY DEPLOYMENT
 const allowedOrigins = [
-   process.env.FRONTEND_URL ||'https://share-your-thoughts-app.netlify.app/',
+   process.env.FRONTEND_URL ||'https://share-your-thoughts-app.netlify.app',
   'http://localhost:3000',  // For local development
   'http://localhost:3001'   // Alternative local port
 ];
@@ -43,7 +43,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Handle preflight requests
-app.options('*', cors(corsOptions));
+app.options('/{*any}', cors(corsOptions));
 
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
