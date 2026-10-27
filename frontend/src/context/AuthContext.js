@@ -11,9 +11,8 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  // Set axios defaults - FIXED: Changed API_URL to API_BASE_URL
   useEffect(() => {
-    axios.defaults.baseURL = API_BASE_URL;  // ← THIS WAS THE ERROR
+    axios.defaults.baseURL = API_BASE_URL;
     if (token) {
       axios.defaults.headers.common['x-auth-token'] = token;
     }
